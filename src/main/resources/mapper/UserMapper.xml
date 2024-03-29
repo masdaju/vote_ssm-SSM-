@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.example.dao.UserDao">
+    <select id="UserLogin" resultType="edu.example.entity.User">
+        SELECT * FROM `user` WHERE username = #{userName} and `password` = #{password};
+    </select>
+
+    <select id="SelectUserList" resultType="edu.example.entity.User">
+        SELECT * FROM `user`;
+    </select>
+
+    <select id="SelectUserUid" resultType="edu.example.entity.User">
+        SELECT * FROM `user` WHERE uid=#{uid};
+    </select>
+    <update id="UpdateUser">
+        UPDATE `user`
+        SET username = #{user.userName},`password`= #{user.password},power= #{user.power} WHERE uid = #{user.uid};
+    </update>
+    <update id="deleteUser">
+        UPDATE `user` SET state = 0 WHERE uid=#{uid};
+    </update>
+    <update id="resetPw">
+        UPDATE `user` SET `password`= "e10adc3949ba59abbe56e057f20f883e" WHERE uid=#{uid};
+    </update>
+    <insert id="addUser">
+        INSERT INTO user(username,password,power,state) VALUES(#{user.userName},#{user.password},#{user.power},1);
+    </insert>
+    <delete id="deleteU" >
+        delete from `user` where `uid`=#{user.uid}
+    </delete>
+    <insert id="Register">
+        INSERT INTO user(username,password,power,state,gender,birthdate,phonenum) VALUES(#{user.userName},#{user.password},1,1,#{user.gender},#{user.birthdate},#{user.phonenum});
+    </insert>
+    <select id="SelectUsername" resultType="edu.example.entity.User">
+        SELECT * FROM `user` WHERE username=#{username};
+    </select>
+</mapper>

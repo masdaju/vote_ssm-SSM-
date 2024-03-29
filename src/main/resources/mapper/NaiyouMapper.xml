@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.example.dao.NaiyouDao">
+<select id="selectVoteList" resultType="edu.example.entity.Naiyou">
+select * from `naiyou`;
+</select>
+    <select id="selectVoteById" resultType="edu.example.entity.Naiyou">
+        SELECT * FROM `naiyou`  where vid=#{vid};
+    </select>
+    <insert id="insertVote" parameterType="edu.example.entity.Naiyou">
+        INSERT INTO naiyou(context,title,state,ntime,lim) VALUES(#{naiyou.context},#{naiyou.title},1,now(),#{naiyou.lim});
+    </insert>
+    <insert id="addVoteT">
+        INSERT INTO ticket(vid) VALUES(#{vid});
+    </insert>
+    <delete id="deleteVoteByGid">
+        delete from `naiyou` where vid=#{vid}
+
+    </delete>
+    <delete id="deleteTById">
+        delete from `ticket` where vid=#{vid}
+    </delete>
+<!--    修改投票-->
+    <update id="UpdateNaiyou">
+        UPDATE `naiyou`
+        SET context = #{naiyou.context},title=#{naiyou.title},state=#{naiyou.state},lim=#{naiyou.lim}
+        WHERE vid = #{naiyou.vid};
+    </update>
+<!--    终止投票-->
+    <update id="ceaseVote">
+        UPDATE `naiyou` SET state=0 WHERE vid = #{naiyou.vid};
+    </update>
+    <select id="detail" resultType="edu.example.entity.Naiyou">
+        SELECT naiyou.*,ticket.agree,ticket.disagree FROM `naiyou` LEFT JOIN `ticket` ON naiyou.vid = ticket.vid where ticket.vid=#{vid};
+    </select>
+</mapper>

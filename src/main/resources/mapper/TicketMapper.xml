@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.example.dao.TicketDao">
+    <select id="selectTicket" resultType="edu.example.entity.Ticket">
+        SELECT ticket.*,naiyou.title,naiyou.state,naiyou.context,naiyou.lim,naiyou.ntime FROM ticket LEFT JOIN naiyou ON ticket.vid = naiyou.vid ;
+    </select>
+    <select id="selectTicketById" resultType="edu.example.entity.Ticket">
+        SELECT ticket.*,naiyou.title,naiyou.state FROM ticket LEFT JOIN naiyou ON ticket.vid = naiyou.vid where ticket.vid=#{vid};
+    </select>
+<!--    赞成票-->
+    <update id="agreeT">
+        update ticket set agree=agree+1 where vid=#{vid}
+    </update>
+<!--    反对票-->
+    <update id="disagreeT">
+        update ticket set disagree=disagree+1 where vid=#{vid}
+    </update>
+    <insert id="insertKiroku">
+        INSERT  INTO kiroku(vid,uid,ptime)
+        VALUES(#{kiroku.vid},(SELECT uid FROM `user` WHERE username = #{kiroku.username}),NOW());
+    </insert>
+
+</mapper>
