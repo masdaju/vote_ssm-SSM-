@@ -22,6 +22,7 @@ public class Kirokucontroller {
     @RequestMapping("/Kiroku")
     public String kiroku(Model model){
         List<Kiroku> kirokuList = kirokuService.selectkiroku();
+        System.out.println(kirokuList);
         model.addAttribute("kirokuList",kirokuList);
         return "tKiroku";
     }

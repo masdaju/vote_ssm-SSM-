@@ -21,6 +21,9 @@
     <update id="deleteUser">
         UPDATE `user` SET state = 0 WHERE uid=#{uid};
     </update>
+    <update id="activeUser">
+        UPDATE `user` SET state = 1 WHERE uid=#{uid};
+    </update>
     <update id="resetPw">
         UPDATE `user` SET `password`= "e10adc3949ba59abbe56e057f20f883e" WHERE uid=#{uid};
     </update>

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class Main {
     public static void main(String[] args) {
-
+//        MD5Utils md5Utils=new MD5Utils();
         System.out.println("Hello world!");
         String input = "bdjhsfzv";
         String encrypted = MD5Utils.md5(input);

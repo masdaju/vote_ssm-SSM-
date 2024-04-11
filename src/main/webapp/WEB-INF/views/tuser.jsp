@@ -124,7 +124,7 @@
     女
 </c:if>
 --%>
-
+<input type="hidden" id="userId" value="${user.getUid()}">
 <table class="biaoge" style="width: 100%">
     <tr>
         <th>用户ID</th>
@@ -152,6 +152,7 @@
                     </c:when>
                 </c:choose>
             </td>
+                <input type="hidden" id="states${status.index}" value="${u.state}">
             <td>
                 <c:if test="${u.state == 0}">
                     不可用
@@ -163,7 +164,7 @@
 
             <td><button id="changebtn${status.index}" onclick="ssss(${status.index})" class="btn"><span>修改信息</span></button></td>
             <td><button id="resetbtn${status.index}" onclick="resetPassord(${status.index})" class="btn"><span>重置密码</span></button></td>
-            <td><button id="deletebtn${status.index}" onclick="deleteUser(${status.index})" class="btn"><span>停用账号</span></button></td>
+            <td><button id="deletebtn${status.index}" onclick="deleteUser(${status.index})" class="btn"><span>停用/启用</span></button></td>
             <td><button id="deletebtn${status.index}" onclick="deleteU(${status.index})" class="btn"><span>删除账号</span></button></td>
 
 
@@ -285,8 +286,17 @@
     //停用账号
     function deleteUser(index){
         let id = $("#id"+index).val();
+        let uid=$("#userId").val();
+        let state=$("#states"+index).val();
+        let url="UsersManage/deleteUser";
+        console.log(state)
+        if (state==="0"){
+            url="UsersManage/activeUser"
+        }
+
+        console.log(url)
         $.ajax({
-            url:"${pageContext.request.contextPath}/UsersManage/deleteUser",
+            url:"${pageContext.request.contextPath}/"+url,
             type : "post",
             data : JSON.stringify({
                 uid:id
@@ -305,6 +315,11 @@
                 alert("失败");
             }
         });
+
+        if (id === uid){
+            window.top.location.href = "${pageContext.request.contextPath}/UsersManage/logout2";
+        }
+
     }
     //删除账号
     function deleteU(index) {

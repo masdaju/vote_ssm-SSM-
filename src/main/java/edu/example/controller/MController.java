@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@SessionAttributes("user")
+//@SessionAttributes("user")
 public class MController {
     @Autowired
     private UserService userService;

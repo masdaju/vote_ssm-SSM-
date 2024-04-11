@@ -132,7 +132,7 @@
 
                     <td><input type="hidden" id="time${status.index}" value="${k.id}">${k.id}</td>
                     <td><input type="hidden" id="id${status.index}" value="${k.vid}">${k.vid}</td>
-                    <td><input type="hidden" id="name${status.index}" value="${k.uid}">${k.uid}</td>
+                    <td><input type="hidden" id="uid${status.index}" value="${k.uid}">${k.uid}</td>
                     <td><input type="hidden" id="name${status.index}" value="${k.username}">${k.username}</td>
                     <td><input type="hidden" id="count${status.index}" value="${k.ptime}">${k.ptime}</td>
 

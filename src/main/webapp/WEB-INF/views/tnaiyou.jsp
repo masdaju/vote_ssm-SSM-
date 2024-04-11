@@ -157,7 +157,7 @@
     <h2>添加投票</h2>
     <div><input type="text" id="alim" placeholder="限定票数"></div>
     <div><input type="text" id="atitle" placeholder="输入标题"></div>
-    <div><textarea id="acontext" placeholder="请输入文本类容" style="width: 1170px; height: 440px;"></textarea></div>
+    <div><textarea id="acontext" placeholder="请输入文本类容" style="width: 1165px; height: 450px;"></textarea></div>
 
     <button id="quxiaoButton" onclick="">取消</button>
     <button id="saveButton"  onclick="addVote()">保存</button>
@@ -170,7 +170,7 @@
     <div><input type="hidden" id="cid" placeholder="请输入投票id"></div>
     <div><input type="text" id="clim" placeholder="每人限投"></div>
     <div><input type="text" id="ctitle" placeholder="输入标题"></div>
-    <div><textarea id="ccontext" placeholder="请输入文本类容" style="width: 1158px; height: 372px;"></textarea></div>
+    <div><textarea id="ccontext" placeholder="请输入文本类容" style="width: 1165px; height: 380px;"></textarea></div>
 
     <div>状态：
         <select id="cstate" name="cstate">
@@ -185,11 +185,15 @@
 <script>
     function findnaiyou() {
         const sid = document.getElementById('sid').value;
+        console.log(sid)
+        if (sid==""){
+            window.location.href = "${pageContext.request.contextPath}/NaiyouManage/Naiyou" ;
+        }else {
         window.location.href = "${pageContext.request.contextPath}/NaiyouManage/selectVid/" + sid;
+        }
     }
     //查看详情
     function redirectToDetail(vid) {
-
         window.location.href = "${pageContext.request.contextPath}/TicketManage/detailVid/" + vid;
     }
     //添加

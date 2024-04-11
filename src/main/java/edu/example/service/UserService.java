@@ -31,6 +31,9 @@ public class UserService {
     public int deleteUser(int uid){
         return userDao.deleteUser(uid);
     }
+    public int activeUser(int uid){
+        return userDao.activeUser(uid);
+    }
     //重置密码
     public int resetPw(int uid){
         return userDao.resetPw(uid);

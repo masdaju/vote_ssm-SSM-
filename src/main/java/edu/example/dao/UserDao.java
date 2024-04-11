@@ -19,6 +19,7 @@ public interface UserDao {
     int UpdateUser(@Param("user") User user);
     //删除用户
     int deleteUser(int uid);
+    int activeUser(int uid);
     //重置密码
     int resetPw(int uid);
 

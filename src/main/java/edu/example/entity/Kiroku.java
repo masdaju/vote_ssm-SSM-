@@ -1,5 +1,6 @@
 package edu.example.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Data
 @Setter
 @Getter
+//@AllArgsConstructor
 public class Kiroku {
     private int vid;
     private int id;

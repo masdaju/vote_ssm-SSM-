@@ -108,7 +108,7 @@
 </body>
 <script>
     function redirectToDetail(vid) {
-        window.open("${pageContext.request.contextPath}/TicketManage/detailVid/" + vid)
+        window.top.location.href = "${pageContext.request.contextPath}/TicketManage/detailVid/" + vid;
     }
     <%--function Ndetails(index){--%>
     <%--    let title = $("#title"+index).val();--%>
@@ -140,7 +140,7 @@
 
 
     function agree(index){
-        if ($("#state"+index).val()==='0'){
+        if ($("#state"+index).val()==0){
             alert("投票已经结束")
         }else{
             let lim = $("#lim"+index).val();
@@ -185,7 +185,7 @@
     }
 
     function disagree(index){
-        if ($("#state"+index).val()==='0'){
+        if ($("#state"+index).val()==0){
             alert("投票已经结束")
         }else{
 

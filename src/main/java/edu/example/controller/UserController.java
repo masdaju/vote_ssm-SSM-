@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/UsersManage")
+    @RequestMapping("/UsersManage")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -57,10 +57,12 @@ public class UserController {
     @PostMapping("/deleteUser")
     @ResponseBody
     public boolean deleteUser(@RequestBody User user){
-        if (userService.deleteUser(user.getUid())>0){
-            return true;
-        }
-        return false;
+        return userService.deleteUser(user.getUid()) > 0;
+    }
+    @PostMapping("/activeUser")
+    @ResponseBody
+    public boolean activeUser(@RequestBody User user){
+        return userService.activeUser(user.getUid()) > 0;
     }
     //重置密码
     @PostMapping("/resetPw")
